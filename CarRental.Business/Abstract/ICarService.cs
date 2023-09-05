@@ -14,13 +14,17 @@ namespace CarRental.Business.Abstract
         IDataResult<List<Car>> GetAll();
 
         IDataResult<List<CarDetailsDto>> GetAllDetails();
+        IDataResult<CarDetailsDto> GetAllDetailsById(int id);
+
 
         IDataResult<List<Car>> GetAllByBrandId(int brandId);
         IDataResult<List<Car>> GetAllByColorId(int colorId);
         IDataResult<List<Car>> GetAllGearTypeId(int gearTypeId);
         IDataResult<List<Car>> GetAllByFuelTypeId(int fuelTypeId);
 
-        IDataResult<List<Car>> GetByUnitPrice(int unitPrice);
+        IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max);
+        IDataResult<List<Car>> GetByMonthlyPrice(decimal min, decimal max);
+
         IDataResult<Car> GetById(int id);
 
         IResult Add(Car car);
