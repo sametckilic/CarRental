@@ -38,7 +38,9 @@ namespace CarRental.Core.DataAccess.EntityFramework
         {
             using (TContext context = new TContext())
             {
-                return context.Set<TEntity>().SingleOrDefault();
+                return filter == null
+                ? context.Set<TEntity>().SingleOrDefault()
+                : context.Set<TEntity>().Where(filter).SingleOrDefault();
             }
         }
 

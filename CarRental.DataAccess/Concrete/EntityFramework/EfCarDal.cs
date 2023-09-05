@@ -28,6 +28,7 @@ namespace CarRental.DataAccess.Concrete.EntityFramework
                             {
                                 Id = cars.Id,
                                 BrandName = brands.BrandName,
+                                ModelName = cars.ModelName,
                                 ColorName = color.ColorName,
                                 GearTypeName = geartype.GearTypeName,
                                 FuelTypeName = fueltype.FuelTypeName,

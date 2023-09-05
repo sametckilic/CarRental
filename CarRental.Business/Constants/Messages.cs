@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarRental.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -21,6 +22,6 @@ namespace CarRental.Business.Constants
         public static string CarUpdated = "Car updated successfully";
         public static string CarsListedByDailyPrice = "Cars listed by daily price successfully";
         public static string CarsListedByMonthlyPrice = "Cars listed by monthly price successfully";
-
+        public static string CarNotFoundError = "Car did not found.";
     }
 }

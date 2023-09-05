@@ -13,7 +13,7 @@ namespace CarRental.DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=SAMETSPC;Database=Northwind;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=SAMETSPC;Database=CarRental;Trusted_Connection=true");
         }
 
         public DbSet<Brand> Brands { get; set; }
