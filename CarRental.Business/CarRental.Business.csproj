@@ -4,4 +4,10 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CarRental.Core\CarRental.Core.csproj" />
+    <ProjectReference Include="..\CarRental.DataAccess\CarRental.DataAccess.csproj" />
+    <ProjectReference Include="..\CarRental.Entities\CarRental.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
