@@ -172,5 +172,21 @@ namespace CarRental.API.Controllers
             }
             return BadRequest(result.Message);
         }
+
+
+        // DELETE REQUSTS
+
+        [HttpDelete("Delete")]
+        public IActionResult Delete(Car car)
+        {
+            var result = _carService.Delete(car);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result.Message);
+        }
     }
 }

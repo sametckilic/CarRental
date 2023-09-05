@@ -3,7 +3,7 @@ using Core.DataAccess;
 
 namespace CarRental.DataAccess.Abstract
 {
-    public interface IGearType : IEntityRepository<GearType>
+    public interface IGearTypeDal : IEntityRepository<GearType>
     {
 
     }

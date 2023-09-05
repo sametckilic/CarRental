@@ -26,7 +26,7 @@ namespace CarRental.Business.Concrete
         {
             _carDal.Add(car);
 
-            return new SuccessResult(Messages.CarAdded);
+            return new SuccessResult(Messages.Car.CarAdded);
         }
 
         public IDataResult<List<Car>> GetAll()
@@ -35,9 +35,9 @@ namespace CarRental.Business.Concrete
 
             if (!result.Any())
             {
-                return new ErrorDataResult<List<Car>>(Messages.CarNotFoundError);
+                return new ErrorDataResult<List<Car>>(Messages.Car.CarNotFoundError);
             }
-            return new SuccessDataResult<List<Car>>(result, Messages.AllCarsListed);
+            return new SuccessDataResult<List<Car>>(result, Messages.Car.AllCarsListed);
         }
 
         public IDataResult<List<Car>> GetAllByBrandId(int brandId)
@@ -46,9 +46,9 @@ namespace CarRental.Business.Concrete
 
             if (result == null)
             {
-                return new ErrorDataResult<List<Car>>(Messages.CarNotFoundError);
+                return new ErrorDataResult<List<Car>>(Messages.Car.CarNotFoundError);
             }
-            return new SuccessDataResult<List<Car>>(result, Messages.AllCarsListedByBrandId);
+            return new SuccessDataResult<List<Car>>(result, Messages.Car.AllCarsListedByBrandId);
         }
 
         public IDataResult<List<Car>> GetAllByColorId(int colorId)
@@ -57,9 +57,9 @@ namespace CarRental.Business.Concrete
 
             if (result == null)
             {
-                return new ErrorDataResult<List<Car>>(Messages.CarNotFoundError);
+                return new ErrorDataResult<List<Car>>(Messages.Car.CarNotFoundError);
             }
-            return new SuccessDataResult<List<Car>>(result, Messages.AllCarsListedByColorId);
+            return new SuccessDataResult<List<Car>>(result, Messages.Car.AllCarsListedByColorId);
 
         }
 
@@ -68,10 +68,10 @@ namespace CarRental.Business.Concrete
             var result = _carDal.GetAll(c => c.FuelTypeId == fuelTypeId);
             if (!result.Any())
             {
-                return new ErrorDataResult<List<Car>>(Messages.CarNotFoundError);
+                return new ErrorDataResult<List<Car>>(Messages.Car.CarNotFoundError);
 
             }
-            return new SuccessDataResult<List<Car>>(result, Messages.AllCarsListedByFuelTypeId);
+            return new SuccessDataResult<List<Car>>(result, Messages.Car.AllCarsListedByFuelTypeId);
 
         }
 
@@ -80,10 +80,10 @@ namespace CarRental.Business.Concrete
             var result = _carDal.GetAllCarDetails();
             if (!result.Any())
             {
-                return new ErrorDataResult<List<CarDetailsDto>>(Messages.CarNotFoundError);
+                return new ErrorDataResult<List<CarDetailsDto>>(Messages.Car.CarNotFoundError);
 
             }
-            return new SuccessDataResult<List<CarDetailsDto>>(result, Messages.AllCarsDetailsListed);
+            return new SuccessDataResult<List<CarDetailsDto>>(result, Messages.Car.AllCarsDetailsListed);
         }
 
         public IDataResult<CarDetailsDto> GetAllDetailsById(int id)
@@ -92,10 +92,10 @@ namespace CarRental.Business.Concrete
 
             if (result == null)
             {
-                return new ErrorDataResult<CarDetailsDto>(Messages.CarNotFoundError);
+                return new ErrorDataResult<CarDetailsDto>(Messages.Car.CarNotFoundError);
 
             }
-            return new SuccessDataResult<CarDetailsDto>(result, Messages.GetCarDetails);
+            return new SuccessDataResult<CarDetailsDto>(result, Messages.Car.GetCarDetails);
 
         }
 
@@ -104,10 +104,10 @@ namespace CarRental.Business.Concrete
             var result = _carDal.GetAll(c => c.GearTypeId == gearTypeId);
             if (!result.Any())
             {
-                return new ErrorDataResult<List<Car>>(Messages.CarNotFoundError);
+                return new ErrorDataResult<List<Car>>(Messages.Car.CarNotFoundError);
 
             }
-            return new SuccessDataResult<List<Car>>(result, Messages.AllCarsListedByGearTypeId);
+            return new SuccessDataResult<List<Car>>(result, Messages.Car.AllCarsListedByGearTypeId);
         }
 
         public IDataResult<Car> GetById(int id)
@@ -115,9 +115,9 @@ namespace CarRental.Business.Concrete
             var result = _carDal.Get(c => c.Id == id);
             if (result == null)
             {
-                return new ErrorDataResult<Car>(Messages.CarNotFoundError);
+                return new ErrorDataResult<Car>(Messages.Car.CarNotFoundError);
             }
-            return new SuccessDataResult<Car>(result, Messages.CarListed);
+            return new SuccessDataResult<Car>(result, Messages.Car.CarListed);
         }
 
         public IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max)
@@ -126,25 +126,32 @@ namespace CarRental.Business.Concrete
 
             if (!result.Any())
             {
-                return new ErrorDataResult<List<Car>>(Messages.CarNotFoundError);
+                return new ErrorDataResult<List<Car>>(Messages.Car.CarNotFoundError);
             }
-            return new SuccessDataResult<List<Car>>(result, Messages.CarsListedByDailyPrice);
+            return new SuccessDataResult<List<Car>>(result, Messages.Car.CarsListedByDailyPrice);
         }
         public IDataResult<List<Car>> GetByMonthlyPrice(decimal min, decimal max)
         {
             var result = _carDal.GetAll(c => c.MonthlyPrice < max && c.MonthlyPrice > min);
             if (!result.Any())
             {
-                return new ErrorDataResult<List<Car>>(Messages.CarNotFoundError);
+                return new ErrorDataResult<List<Car>>(Messages.Car.CarNotFoundError);
             }
-            return new SuccessDataResult<List<Car>>(result, Messages.CarsListedByMonthlyPrice);
+            return new SuccessDataResult<List<Car>>(result, Messages.Car.CarsListedByMonthlyPrice);
         }
 
         public IResult Update(Car car)
         {
             _carDal.Update(car);
 
-            return new SuccessResult(Messages.CarUpdated);
+            return new SuccessResult(Messages.Car.CarUpdated);
+        }
+
+        public IResult Delete(Car car)
+        {
+            _carDal.Delete(car);
+
+            return new SuccessResult(Messages.Car.CarDeleted);
         }
     }
 }

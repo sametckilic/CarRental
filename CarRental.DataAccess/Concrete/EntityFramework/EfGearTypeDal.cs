@@ -4,7 +4,7 @@ using CarRental.Entities.Concrete;
 
 namespace CarRental.DataAccess.Concrete.EntityFramework
 {
-    public class EfGearTypeDal : EfEntityRepositoryBase<GearType, CarRentalContext>, IGearType
+    public class EfGearTypeDal : EfEntityRepositoryBase<GearType, CarRentalContext>, IGearTypeDal
     {
 
     }
