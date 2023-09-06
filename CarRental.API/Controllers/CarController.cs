@@ -1,8 +1,12 @@
 ﻿using CarRental.Business.Abstract;
+using CarRental.Business.BusinessAspect.Autofac;
+using CarRental.Business.ValidationRules.FluentValidation;
+using CarRental.Core.Aspects.Autofac.Validation;
 using CarRental.Core.Utilities.Results;
 using CarRental.Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.Reflection.Emit;
 
 namespace CarRental.API.Controllers
@@ -144,6 +148,7 @@ namespace CarRental.API.Controllers
 
 
         // POST REQUESTS
+
 
         [HttpPost("Add")]
         public IActionResult Add(Car car)

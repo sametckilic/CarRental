@@ -1,5 +1,9 @@
 ﻿using CarRental.Business.Abstract;
+using CarRental.Business.BusinessAspect.Autofac;
 using CarRental.Business.Constants;
+using CarRental.Business.ValidationRules.FluentValidation;
+using CarRental.Core.Aspects.Autofac.Caching;
+using CarRental.Core.Aspects.Autofac.Validation;
 using CarRental.Core.Utilities.Results;
 using CarRental.DataAccess.Abstract;
 using CarRental.Entities.Concrete;
@@ -22,6 +26,9 @@ namespace CarRental.Business.Concrete
             _carDal = carDal;
         }
 
+        [SecuredOperation("car.add , admin")]
+        [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
         {
             _carDal.Add(car);
@@ -29,6 +36,7 @@ namespace CarRental.Business.Concrete
             return new SuccessResult(Messages.Car.CarAdded);
         }
 
+        [CacheAspect]
         public IDataResult<List<Car>> GetAll()
         {
             var result = _carDal.GetAll();
@@ -40,6 +48,7 @@ namespace CarRental.Business.Concrete
             return new SuccessDataResult<List<Car>>(result, Messages.Car.AllCarsListed);
         }
 
+        [CacheAspect]
         public IDataResult<List<Car>> GetAllByBrandId(int brandId)
         {
             var result = _carDal.GetAll(c => c.BrandId == brandId);
@@ -110,6 +119,7 @@ namespace CarRental.Business.Concrete
             return new SuccessDataResult<List<Car>>(result, Messages.Car.AllCarsListedByGearTypeId);
         }
 
+        [CacheAspect]
         public IDataResult<Car> GetById(int id)
         {
             var result = _carDal.Get(c => c.Id == id);
@@ -130,6 +140,7 @@ namespace CarRental.Business.Concrete
             }
             return new SuccessDataResult<List<Car>>(result, Messages.Car.CarsListedByDailyPrice);
         }
+
         public IDataResult<List<Car>> GetByMonthlyPrice(decimal min, decimal max)
         {
             var result = _carDal.GetAll(c => c.MonthlyPrice < max && c.MonthlyPrice > min);
@@ -140,6 +151,7 @@ namespace CarRental.Business.Concrete
             return new SuccessDataResult<List<Car>>(result, Messages.Car.CarsListedByMonthlyPrice);
         }
 
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Update(Car car)
         {
             _carDal.Update(car);
@@ -147,6 +159,7 @@ namespace CarRental.Business.Concrete
             return new SuccessResult(Messages.Car.CarUpdated);
         }
 
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);

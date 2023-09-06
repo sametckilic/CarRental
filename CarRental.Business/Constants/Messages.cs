@@ -1,4 +1,5 @@
-﻿using CarRental.Entities.Concrete;
+﻿using Autofac;
+using CarRental.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,6 +69,27 @@ namespace CarRental.Business.Constants
             public static string GearTypeDeleted = "GearType deleted successfully";
             public static string GearTypeNotFound = "GearType not found";
             public static string GearTypesListed = "All GearTypes listed succesfully";
+        }
+
+        public static class Validation
+        {
+            public static string ChooseCorrectYear = "Please choose correct year";
+            public static string NameTooLong = "Name is too long!";
+            public static string DailyPriceBetweenError = "Daily price have to beetween 1 - 99999";
+            public static string NotNull = "This section can not be empty!";
+            public static string MonthlyPriceBetweenError = "Daily price have to beetween 1 - 99999";
+
+        }
+
+        public static class User
+        {
+            public static string AuthorizationDenied = "Authorization is denied.";
+            public static string UserRegistered = "User registered successfuly.";
+            public static string UserNotFound = "User did not found.";
+            public static string WrongPassword = "Wrong Password";
+            public static string SuccessLogin = "Logined succesfully.";
+            public static string UserExist = "The user is exist";
+            public static string TokenCreated = "Token created succesfully";
         }
     }
 }

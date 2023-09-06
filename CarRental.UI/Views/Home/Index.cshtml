@@ -1,0 +1,45 @@
+﻿@using CarRental.Entities.Concrete
+@using CarRental.Entities.DTOs
+
+@model List<CarDetailsDto>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>BrandName</th>
+            <th>ModelName</th>
+            <th>ColorName</th>
+            <th>GearTypeName</th>
+            <th>FuelTypeName</th>
+            <th>ModelYear</th>
+            <th>DailyPrice</th>
+            <th>MonthlyPrice</th>
+            <th>Status</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+           <tr>
+               <th>@item.Id</th>
+                <th>@item.BrandName</th>
+                <th>@item.ModelName</th>
+                <th>@item.ColorName</th>
+                <th>@item.GearTypeName</th>
+                <th>@item.FuelTypeName</th>
+                <th>@item.ModelYear.Year</th>
+                <th>@item.DailyPrice</th>
+                <th>@item.MonthlyPrice</th>
+                <th>@item.Status</th>
+                <th>@item.Description</th>
+            
+
+           </tr>
+        </tbody>
+    }

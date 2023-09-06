@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CarRental.Business.BusinessAspect.Autofac;
 
 namespace ColorRental.Business.Concrete
 {
@@ -19,6 +20,8 @@ namespace ColorRental.Business.Concrete
         {
             _colorDal = colorDal;
         }
+
+        [SecuredOperation("admin")]
         public IResult Add(Color color)
         {
             _colorDal.Add(color);
@@ -26,6 +29,7 @@ namespace ColorRental.Business.Concrete
             return new SuccessResult(Messages.Color.ColorAdded);
         }
 
+        [SecuredOperation("admin")]
         public IResult Delete(Color color)
         {
             _colorDal.Delete(color);
@@ -33,6 +37,7 @@ namespace ColorRental.Business.Concrete
             return new SuccessResult(Messages.Color.ColorDeleted);
         }
 
+        [SecuredOperation("admin")]
         public IDataResult<List<Color>> GetAll()
         {
             var result = _colorDal.GetAll();
@@ -45,6 +50,7 @@ namespace ColorRental.Business.Concrete
             return new SuccessDataResult<List<Color>>(result, Messages.Color.ColorsListed);
         }
 
+        [SecuredOperation("admin")]
         public IDataResult<Color> GetById(int colorId)
         {
             var result = _colorDal.Get(b => b.Id == colorId);
@@ -57,6 +63,7 @@ namespace ColorRental.Business.Concrete
 
         }
 
+        [SecuredOperation("admin")]
         public IResult Update(Color color)
         {
             _colorDal.Update(color);

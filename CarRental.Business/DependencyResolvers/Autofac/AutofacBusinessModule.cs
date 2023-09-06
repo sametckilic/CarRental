@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using CarRental.Business.Abstract;
 using CarRental.Business.Concrete;
+using CarRental.Core.Utilities.Security.JWT;
 using CarRental.DataAccess.Abstract;
 using CarRental.DataAccess.Concrete.EntityFramework;
 using Castle.DynamicProxy;
@@ -17,20 +18,33 @@ namespace CarRental.Business.DependencyResolvers.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<CarManager>().As<ICarService>();
-            builder.RegisterType<EfCarDal>().As<ICarDal>();
+            builder.RegisterType<CarManager>().As<ICarService>().SingleInstance();
+            builder.RegisterType<EfCarDal>().As<ICarDal>().SingleInstance();
 
-            builder.RegisterType<BrandManager>().As<IBrandService>();
-            builder.RegisterType<EfBrandDal>().As<IBrandDal>();
+            builder.RegisterType<BrandManager>().As<IBrandService>().SingleInstance();
+            builder.RegisterType<EfBrandDal>().As<IBrandDal>().SingleInstance();
 
-            builder.RegisterType<ColorManager>().As<IColorService>();
-            builder.RegisterType<EfColorDal>().As<IColorDal>();
+            builder.RegisterType<ColorManager>().As<IColorService>().SingleInstance();
+            builder.RegisterType<EfColorDal>().As<IColorDal>().SingleInstance();
 
-            builder.RegisterType<FuelTypeManager>().As<IFuelTypeService>();
-            builder.RegisterType<EfFuelTypeDal>().As<IFuelTypeDal>();
+            builder.RegisterType<FuelTypeManager>().As<IFuelTypeService>().SingleInstance();
+            builder.RegisterType<EfFuelTypeDal>().As<IFuelTypeDal>().SingleInstance();
 
-            builder.RegisterType<GearTypeManager>().As<IGearTypeService>();
-            builder.RegisterType<EfGearTypeDal>().As<IGearTypeDal>();
+            builder.RegisterType<GearTypeManager>().As<IGearTypeService>().SingleInstance();
+            builder.RegisterType<EfGearTypeDal>().As<IGearTypeDal>().SingleInstance();
+
+
+            builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
+            builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+            builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
+
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>().SingleInstance();
+
+
+
+
 
 
         }
