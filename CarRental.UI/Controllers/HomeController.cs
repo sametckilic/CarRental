@@ -23,7 +23,11 @@ namespace CarRental.UI.Controllers
         public IActionResult Index()
         {
             var result = _carService.GetAllDetails();
-            return View(result.Data);
+            CarsDetailsViewModel Model = new CarsDetailsViewModel();
+            Model.Cars = result.Data;
+            Model.Success = result.Success;
+            Model.Message = result.Message;
+            return View(Model);
         }
 
         public IActionResult Privacy()
