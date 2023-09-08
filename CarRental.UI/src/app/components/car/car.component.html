@@ -1,14 +1,24 @@
-<table class="table">
-  <tr>
-    <td>ID</td>
-    <td>Brand Name</td>
-    <td>Model Name</td>
-    <td>Price</td>
-  </tr>
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-border text-dark mx-auto"
+  role="status"
+>
+  <span class="sr-only"></span>
+</div>
+
+<table *ngIf="dataLoaded == true" class="table">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>Brand Id</td>
+      <td>Model Name</td>
+      <td>Price</td>
+    </tr>
+  </thead>
   <tr *ngFor="let car of cars">
     <td>{{ car.id }}</td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>{{ car.brandId }}</td>
+    <td>{{ car.modelName }}</td>
+    <td>{{ car.dailyPrice }}</td>
   </tr>
 </table>
