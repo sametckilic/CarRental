@@ -40,7 +40,6 @@ namespace CarRental.Business.Concrete
         [CacheAspect]
         public IDataResult<List<Car>> GetAll()
         {
-            Thread.Sleep(1000);
             var result = _carDal.GetAll();
 
             if (!result.Any())
