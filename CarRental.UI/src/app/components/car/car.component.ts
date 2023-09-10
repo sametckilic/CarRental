@@ -38,4 +38,9 @@ export class CarComponent implements OnInit {
       this.dataLoaded = true;
     });
   }
+  getFuelTypesByFuelTypeId(fuelTypeId: number) {
+    this.carService.getCarsByFuelTypeId(fuelTypeId).subscribe((response) => {
+      this.cars = response.data;
+    });
+  }
 }
