@@ -45,7 +45,12 @@
             Renkler
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li
+              *ngFor="let color of colors"
+              routerLink="cars/color/{{ color.id }}"
+            >
+              <a class="dropdown-item">{{ color.colorName }}</a>
+            </li>
           </ul>
         </li>
         <li class="nav-item dropdown">

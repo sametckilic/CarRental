@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, ObservedValueOf } from 'rxjs';
 import { Car } from '../models/car';
 import { ListResponseModel } from '../models/listResponseModel';
 import { CarDto } from '../models/carDto';
@@ -39,8 +39,30 @@ export class CarService {
     return this.httpClient.get<ListResponseModel<CarDto>>(path);
   }
 
-  getCarDtoById(id: number): Observable<ListResponseModel<CarDto>> {
-    let path = this.apiUrl + 'Car/GetAllDetailsById?id=' + id;
+  getAllDetailsByBrandId(
+    brandId: number
+  ): Observable<ListResponseModel<CarDto>> {
+    let path = this.apiUrl + 'Car/GetAllDetailsByBrandId?brandId=' + brandId;
+    return this.httpClient.get<ListResponseModel<CarDto>>(path);
+  }
+  getAllDetailsByColorId(
+    colorId: number
+  ): Observable<ListResponseModel<CarDto>> {
+    let path = this.apiUrl + 'Car/GetAllDetailsByColorId?colorId=' + colorId;
+    return this.httpClient.get<ListResponseModel<CarDto>>(path);
+  }
+  getAllDetailsByFuelTypeId(
+    fuelTypeId: number
+  ): Observable<ListResponseModel<CarDto>> {
+    let path =
+      this.apiUrl + 'Car/GetAllDetailsByFuelTypeId?fuelTypeId=' + fuelTypeId;
+    return this.httpClient.get<ListResponseModel<CarDto>>(path);
+  }
+  getAllDetailsByGearTypeId(
+    gearTypeId: number
+  ): Observable<ListResponseModel<CarDto>> {
+    let path =
+      this.apiUrl + 'Car/GetAllDetailsByGearTypeId?gearTypeId=' + gearTypeId;
     return this.httpClient.get<ListResponseModel<CarDto>>(path);
   }
 }

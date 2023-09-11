@@ -11,6 +11,7 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarComponent implements OnInit {
   cars: Car[] = [];
+  success: boolean = true;
   carsDtos: CarDto[] = [];
   dataLoaded = false;
   constructor(
@@ -35,6 +36,8 @@ export class CarComponent implements OnInit {
   }
 
   getCars() {
+    this.dataLoaded = false;
+
     this.carService.getCars().subscribe((response) => {
       this.cars = response.data;
       this.dataLoaded = true;
@@ -42,41 +45,57 @@ export class CarComponent implements OnInit {
   }
 
   getCarsDto() {
+    this.dataLoaded = false;
+
     this.carService.getCarsDto().subscribe((response) => {
       this.carsDtos = response.data;
       this.dataLoaded = true;
     });
   }
-  getCarDtoById(id: number) {
-    this.carService.getCarDtoById(id).subscribe((response) => {
-      console.log(response.data);
-      return response.data;
+
+  getCarsByBrandId(brandId: number) {
+    this.dataLoaded = false;
+
+    this.carService.getAllDetailsByBrandId(brandId).subscribe((response) => {
+      this.carsDtos = response.data;
+      this.dataLoaded = true;
     });
   }
-
-  getCarsByBrandId = (brandId: number) => {
-    this.carService.getCarsByBrandId(brandId).subscribe((response) => {
-      response.data.map((data) => {
-        console.log(this.getCarDtoById(data.id));
-      });
-      this.dataLoaded = true;
-    });
-  };
   getCarsByFuelTypeId(fuelTypeId: number) {
-    this.carService.getCarsByFuelTypeId(fuelTypeId).subscribe((response) => {
-      this.cars = response.data;
-      this.dataLoaded = true;
-    });
+    this.dataLoaded = false;
+
+    this.carService
+      .getAllDetailsByFuelTypeId(fuelTypeId)
+      .subscribe((response) => {
+        if (response.success) {
+          this.carsDtos = response.data;
+          this.dataLoaded = true;
+        } else {
+          this.carsDtos = [];
+        }
+      });
   }
   getCarsByGearTypeId(gearTypeId: number) {
-    this.carService.getCarsByGearTypeId(gearTypeId).subscribe((response) => {
-      this.cars = response.data;
-    });
+    this.dataLoaded = false;
+
+    this.carService
+      .getAllDetailsByGearTypeId(gearTypeId)
+      .subscribe((response) => {
+        this.carsDtos = response.data;
+        this.dataLoaded = true;
+      });
   }
   getCarsByColorId(colorTypeId: number) {
-    this.carService.getCarsByColorId(colorTypeId).subscribe((response) => {
-      this.cars = response.data;
-      this.dataLoaded = true;
-    });
+    this.dataLoaded = false;
+
+    this.carService
+      .getAllDetailsByColorId(colorTypeId)
+      .subscribe((response) => {
+        console.log('samet');
+        if (response.success) {
+          this.carsDtos = response.data;
+          this.dataLoaded = true;
+        }
+      });
   }
 }

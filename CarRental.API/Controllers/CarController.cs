@@ -31,7 +31,7 @@ namespace CarRental.API.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
         [HttpGet("GetAllDetailsById")]
@@ -43,7 +43,52 @@ namespace CarRental.API.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
+        }
+        [HttpGet("GetAllDetailsByBrandId")]
+        public IActionResult GetAllDetailsByBrandId(int brandId)
+        {
+            var result = _carService.GetAllDetailsByBrandId(brandId);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("GetAllDetailsByColorId")]
+        public IActionResult GetAllDetailsByColorId(int colorId)
+        {
+            var result = _carService.GetAllDetailsByColorId(colorId);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("GetAllDetailsByFuelTypeId")]
+        public IActionResult GetAllDetailsByFuelTypeId(int fuelTypeId)
+        {
+            var result = _carService.GetAllDetailsByBrandId(fuelTypeId);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("GetAllDetailsByGearTypeId")]
+        public IActionResult GetAllDetailsByGearTypeId(int gearTypeId)
+        {
+            var result = _carService.GetAllDetailsByGearTypeId(gearTypeId);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
 
         [HttpGet("GetById")]
@@ -55,7 +100,7 @@ namespace CarRental.API.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
         [HttpGet("GetAll")]
@@ -67,7 +112,7 @@ namespace CarRental.API.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
         [HttpGet("GetByBrandId")]
@@ -79,7 +124,7 @@ namespace CarRental.API.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
 
         }
 
@@ -92,7 +137,7 @@ namespace CarRental.API.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
 
         }
 
@@ -105,7 +150,7 @@ namespace CarRental.API.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
 
         }
 
@@ -118,7 +163,7 @@ namespace CarRental.API.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
 
         }
 
@@ -131,7 +176,7 @@ namespace CarRental.API.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
         [HttpGet("GetByMonthlyPrice")]
@@ -143,7 +188,7 @@ namespace CarRental.API.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
 
@@ -159,7 +204,7 @@ namespace CarRental.API.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
 
@@ -175,7 +220,7 @@ namespace CarRental.API.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
 
@@ -191,7 +236,7 @@ namespace CarRental.API.Controllers
                 return Ok(result);
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
     }
 }
