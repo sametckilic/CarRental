@@ -20,9 +20,21 @@ export class CarComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       if (params['brandId']) {
         this.getCarsByBrandId(params['brandId']);
+      } else if (params['fuelTypeId']) {
+        this.getCarsByFuelTypeId(params['fuelTypeId']);
+      } else if (params['gearTypeId']) {
+        this.getCarsByGearTypeId(params['gearTypeId']);
+      } else if (params['colorId']) {
+        this.getCarsByColorId(params['colorId']);
       } else {
-        this.getCars();
+        this.getCarsDto();
       }
+    });
+  }
+
+  getCarsDto() {
+    this.carService.GetCarsDto().subscribe((response) => {
+      this.cars = response.data;
     });
   }
 
@@ -38,9 +50,21 @@ export class CarComponent implements OnInit {
       this.dataLoaded = true;
     });
   }
-  getFuelTypesByFuelTypeId(fuelTypeId: number) {
+  getCarsByFuelTypeId(fuelTypeId: number) {
     this.carService.getCarsByFuelTypeId(fuelTypeId).subscribe((response) => {
       this.cars = response.data;
+      this.dataLoaded = true;
+    });
+  }
+  getCarsByGearTypeId(gearTypeId: number) {
+    this.carService.getCarsByGearTypeId(gearTypeId).subscribe((response) => {
+      this.cars = response.data;
+    });
+  }
+  getCarsByColorId(colorTypeId: number) {
+    this.carService.getCarsByColorId(colorTypeId).subscribe((response) => {
+      this.cars = response.data;
+      this.dataLoaded = true;
     });
   }
 }

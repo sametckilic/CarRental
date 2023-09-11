@@ -1,1 +1,12 @@
-<p>fuel-type works!</p>
+<div *ngIf="dataLoaded == true">
+  <ul class="list-group">
+    <li routerLink="/cars" class="list-group-item">Tüm Yakıt Tipleri</li>
+    <li
+      class="list-group-item"
+      *ngFor="let fuelType of fuelTypes"
+      routerLink="/cars/fuelType/{{ fuelType.id }}"
+    >
+      {{ fuelType.fuelTypeName }}
+    </li>
+  </ul>
+</div>
