@@ -15,6 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static CarRental.Business.Constants.Messages;
 
 namespace CarRental.Business.Concrete
 {
@@ -34,7 +35,7 @@ namespace CarRental.Business.Concrete
         {
             _carDal.Add(car);
 
-            return new SuccessResult(Messages.Car.CarAdded);
+            return new SuccessResult(Messages.CarMessages.CarAdded);
         }
 
         [CacheAspect]
@@ -44,9 +45,9 @@ namespace CarRental.Business.Concrete
 
             if (!result.Any())
             {
-                return new ErrorDataResult<List<Car>>(Messages.Car.CarNotFoundError);
+                return new ErrorDataResult<List<Car>>(Messages.CarMessages.CarNotFoundError);
             }
-            return new SuccessDataResult<List<Car>>(result, Messages.Car.AllCarsListed);
+            return new SuccessDataResult<List<Car>>(result, Messages.CarMessages.AllCarsListed);
         }
 
         [CacheAspect]
@@ -56,9 +57,9 @@ namespace CarRental.Business.Concrete
 
             if (result == null)
             {
-                return new ErrorDataResult<List<Car>>(Messages.Car.CarNotFoundError);
+                return new ErrorDataResult<List<Car>>(Messages.CarMessages.CarNotFoundError);
             }
-            return new SuccessDataResult<List<Car>>(result, Messages.Car.AllCarsListedByBrandId);
+            return new SuccessDataResult<List<Car>>(result, Messages.CarMessages.AllCarsListedByBrandId);
         }
 
         public IDataResult<List<Car>> GetAllByColorId(int colorId)
@@ -67,9 +68,9 @@ namespace CarRental.Business.Concrete
 
             if (result == null)
             {
-                return new ErrorDataResult<List<Car>>(Messages.Car.CarNotFoundError);
+                return new ErrorDataResult<List<Car>>(Messages.CarMessages.CarNotFoundError);
             }
-            return new SuccessDataResult<List<Car>>(result, Messages.Car.AllCarsListedByColorId);
+            return new SuccessDataResult<List<Car>>(result, Messages.CarMessages.AllCarsListedByColorId);
 
         }
 
@@ -78,10 +79,10 @@ namespace CarRental.Business.Concrete
             var result = _carDal.GetAll(c => c.FuelTypeId == fuelTypeId);
             if (!result.Any())
             {
-                return new ErrorDataResult<List<Car>>(Messages.Car.CarNotFoundError);
+                return new ErrorDataResult<List<Car>>(Messages.CarMessages.CarNotFoundError);
 
             }
-            return new SuccessDataResult<List<Car>>(result, Messages.Car.AllCarsListedByFuelTypeId);
+            return new SuccessDataResult<List<Car>>(result, Messages.CarMessages.AllCarsListedByFuelTypeId);
 
         }
 
@@ -90,10 +91,10 @@ namespace CarRental.Business.Concrete
             var result = _carDal.GetAllCarDetails();
             if (!result.Any())
             {
-                return new ErrorDataResult<List<CarDetailsDto>>(Messages.Car.CarNotFoundError);
+                return new ErrorDataResult<List<CarDetailsDto>>(Messages.CarMessages.CarNotFoundError);
 
             }
-            return new SuccessDataResult<List<CarDetailsDto>>(result, Messages.Car.AllCarsDetailsListed);
+            return new SuccessDataResult<List<CarDetailsDto>>(result, Messages.CarMessages.AllCarsDetailsListed);
         }
 
         public IDataResult<CarDetailsDto> GetAllDetailsById(int id)
@@ -102,10 +103,10 @@ namespace CarRental.Business.Concrete
 
             if (result == null)
             {
-                return new ErrorDataResult<CarDetailsDto>(Messages.Car.CarNotFoundError);
+                return new ErrorDataResult<CarDetailsDto>(Messages.CarMessages.CarNotFoundError);
 
             }
-            return new SuccessDataResult<CarDetailsDto>(result, Messages.Car.GetCarDetails);
+            return new SuccessDataResult<CarDetailsDto>(result, Messages.CarMessages.GetCarDetails);
 
         }
 
@@ -114,10 +115,10 @@ namespace CarRental.Business.Concrete
             var result = _carDal.GetAll(c => c.GearTypeId == gearTypeId);
             if (!result.Any())
             {
-                return new ErrorDataResult<List<Car>>(Messages.Car.CarNotFoundError);
+                return new ErrorDataResult<List<Car>>(Messages.CarMessages.CarNotFoundError);
 
             }
-            return new SuccessDataResult<List<Car>>(result, Messages.Car.AllCarsListedByGearTypeId);
+            return new SuccessDataResult<List<Car>>(result, Messages.CarMessages.AllCarsListedByGearTypeId);
         }
 
         [CacheAspect]
@@ -126,9 +127,9 @@ namespace CarRental.Business.Concrete
             var result = _carDal.Get(c => c.Id == id);
             if (result == null)
             {
-                return new ErrorDataResult<Car>(Messages.Car.CarNotFoundError);
+                return new ErrorDataResult<Car>(Messages.CarMessages.CarNotFoundError);
             }
-            return new SuccessDataResult<Car>(result, Messages.Car.CarListed);
+            return new SuccessDataResult<Car>(result, Messages.CarMessages.CarListed);
         }
 
         public IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max)
@@ -137,9 +138,52 @@ namespace CarRental.Business.Concrete
 
             if (!result.Any())
             {
-                return new ErrorDataResult<List<Car>>(Messages.Car.CarNotFoundError);
+                return new ErrorDataResult<List<Car>>(Messages.CarMessages.CarNotFoundError);
             }
-            return new SuccessDataResult<List<Car>>(result, Messages.Car.CarsListedByDailyPrice);
+            return new SuccessDataResult<List<Car>>(result, Messages.CarMessages.CarsListedByDailyPrice);
+        }
+        public IDataResult<List<CarDetailsDto>> GetAllDetailsByBrandId(int brandId)
+        {
+            var result = _carDal.GetAllCarDetailsByBrandId(brandId);
+
+            if (!result.Any())
+            {
+                return new ErrorDataResult<List<CarDetailsDto>>(Messages.CarMessages.CarNotFoundError);
+            }
+            return new SuccessDataResult<List<CarDetailsDto>>(result, Messages.CarMessages.AllCarsListedByBrandId);
+
+        }
+
+        public IDataResult<List<CarDetailsDto>> GetAllDetailsByColorId(int colorId)
+        {
+            var result = _carDal.GetAllCarDetailsByColorId(colorId);
+            if (!result.Any())
+            {
+                return new ErrorDataResult<List<CarDetailsDto>>(Messages.CarMessages.CarNotFoundError);
+            }
+            return new SuccessDataResult<List<CarDetailsDto>>(result, Messages.CarMessages.AllCarsListedByColorId);
+        }
+
+        public IDataResult<List<CarDetailsDto>> GetAllDetailsByGearTypeId(int gearTypeId)
+        {
+            var result = _carDal.GetAllCarDetailsByGearTypeId(gearTypeId);
+
+            if (!result.Any())
+            {
+                return new ErrorDataResult<List<CarDetailsDto>>(Messages.CarMessages.CarNotFoundError);
+            }
+            return new SuccessDataResult<List<CarDetailsDto>>(result, Messages.CarMessages.AllCarsListedByBrandId);
+        }
+
+        public IDataResult<List<CarDetailsDto>> GetAllDetailsByFuelTypeId(int fuelTypeId)
+        {
+            var result = _carDal.GetAllCarDetailsByFuelTypeId(fuelTypeId);
+
+            if (!result.Any())
+            {
+                return new ErrorDataResult<List<CarDetailsDto>>(Messages.CarMessages.CarNotFoundError);
+            }
+            return new SuccessDataResult<List<CarDetailsDto>>(result, Messages.CarMessages.AllCarsListedByBrandId);
         }
 
         public IDataResult<List<Car>> GetByMonthlyPrice(decimal min, decimal max)
@@ -147,9 +191,9 @@ namespace CarRental.Business.Concrete
             var result = _carDal.GetAll(c => c.MonthlyPrice < max && c.MonthlyPrice > min);
             if (!result.Any())
             {
-                return new ErrorDataResult<List<Car>>(Messages.Car.CarNotFoundError);
+                return new ErrorDataResult<List<Car>>(Messages.CarMessages.CarNotFoundError);
             }
-            return new SuccessDataResult<List<Car>>(result, Messages.Car.CarsListedByMonthlyPrice);
+            return new SuccessDataResult<List<Car>>(result, Messages.CarMessages.CarsListedByMonthlyPrice);
         }
 
         [CacheRemoveAspect("ICarService.Get")]
@@ -157,7 +201,7 @@ namespace CarRental.Business.Concrete
         {
             _carDal.Update(car);
 
-            return new SuccessResult(Messages.Car.CarUpdated);
+            return new SuccessResult(Messages.CarMessages.CarUpdated);
         }
 
         [CacheRemoveAspect("ICarService.Get")]
@@ -165,7 +209,9 @@ namespace CarRental.Business.Concrete
         {
             _carDal.Delete(car);
 
-            return new SuccessResult(Messages.Car.CarDeleted);
+            return new SuccessResult(Messages.CarMessages.CarDeleted);
         }
+
+
     }
 }

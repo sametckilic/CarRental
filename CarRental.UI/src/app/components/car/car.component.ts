@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
+import { CarDto } from 'src/app/models/carDto';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarComponent implements OnInit {
   cars: Car[] = [];
+  carsDtos: CarDto[] = [];
   dataLoaded = false;
   constructor(
     private carService: CarService,
@@ -32,24 +34,34 @@ export class CarComponent implements OnInit {
     });
   }
 
-  getCarsDto() {
-    this.carService.GetCarsDto().subscribe((response) => {
-      this.cars = response.data;
-    });
-  }
-
   getCars() {
     this.carService.getCars().subscribe((response) => {
       this.cars = response.data;
       this.dataLoaded = true;
     });
   }
-  getCarsByBrandId(brandId: number) {
-    this.carService.getCarsByBrandId(brandId).subscribe((response) => {
-      this.cars = response.data;
+
+  getCarsDto() {
+    this.carService.getCarsDto().subscribe((response) => {
+      this.carsDtos = response.data;
       this.dataLoaded = true;
     });
   }
+  getCarDtoById(id: number) {
+    this.carService.getCarDtoById(id).subscribe((response) => {
+      console.log(response.data);
+      return response.data;
+    });
+  }
+
+  getCarsByBrandId = (brandId: number) => {
+    this.carService.getCarsByBrandId(brandId).subscribe((response) => {
+      response.data.map((data) => {
+        console.log(this.getCarDtoById(data.id));
+      });
+      this.dataLoaded = true;
+    });
+  };
   getCarsByFuelTypeId(fuelTypeId: number) {
     this.carService.getCarsByFuelTypeId(fuelTypeId).subscribe((response) => {
       this.cars = response.data;

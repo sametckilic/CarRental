@@ -15,9 +15,9 @@
       <td>Price</td>
     </tr>
   </thead>
-  <tr *ngFor="let car of cars">
+  <tr *ngFor="let car of carsDtos">
     <td>{{ car.id }}</td>
-    <td>{{ car.brandId }}</td>
+    <td>{{ car.brandName }}</td>
     <td>{{ car.modelName }}</td>
     <td>{{ car.dailyPrice }}</td>
   </tr>

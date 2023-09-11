@@ -15,6 +15,11 @@ namespace CarRental.Business.Abstract
 
         IDataResult<List<CarDetailsDto>> GetAllDetails();
         IDataResult<CarDetailsDto> GetAllDetailsById(int id);
+        IDataResult<List<CarDetailsDto>> GetAllDetailsByBrandId(int brandId);
+        IDataResult<List<CarDetailsDto>> GetAllDetailsByColorId(int colorId);
+        IDataResult<List<CarDetailsDto>> GetAllDetailsByGearTypeId(int gearTypeId);
+        IDataResult<List<CarDetailsDto>> GetAllDetailsByFuelTypeId(int fuelTypeId);
+
 
 
         IDataResult<List<Car>> GetAllByBrandId(int brandId);

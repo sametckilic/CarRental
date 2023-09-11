@@ -12,7 +12,7 @@ namespace CarRental.Business.Constants
     public class Messages
     {
 
-        public static class Car
+        public static class CarMessages
         {
             public static string CarAdded = "Car added successfully.";
             public static string AllCarsListed = "All cars listed successfully.";
