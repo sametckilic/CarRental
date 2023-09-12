@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">CarRental</a>
     <button
@@ -63,7 +63,12 @@
             Yakıt Tipleri
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li
+              *ngFor="let fuelType of fuelTypes"
+              routerLink="cars/fueltype/{{ fuelType.id }}"
+            >
+              <a class="dropdown-item">{{ fuelType.fuelTypeName }}</a>
+            </li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -77,7 +82,12 @@
             Vites Tipi
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li
+              *ngFor="let gearType of gearTypes"
+              routerLink="cars/gearType/{{ gearType.id }}"
+            >
+              <a class="dropdown-item">{{ gearType.gearTypeName }}</a>
+            </li>
           </ul>
         </li>
       </ul>
@@ -90,6 +100,48 @@
         />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
+    </div>
+  </div>
+</nav> -->
+
+<nav
+  class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+  id="ftco-navbar"
+>
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Car<span>Book</span></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#ftco-nav"
+      aria-controls="ftco-nav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="oi oi-menu"></span> Menu
+    </button>
+
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a href="index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="about.html" class="nav-link">About</a>
+        </li>
+        <li class="nav-item">
+          <a href="services.html" class="nav-link">Services</a>
+        </li>
+        <li class="nav-item">
+          <a href="pricing.html" class="nav-link">Pricing</a>
+        </li>
+        <li class="nav-item"><a href="car.html" class="nav-link">Cars</a></li>
+        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+        <li class="nav-item">
+          <a href="contact.html" class="nav-link">Contact</a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

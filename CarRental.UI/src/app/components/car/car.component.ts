@@ -91,7 +91,6 @@ export class CarComponent implements OnInit {
     this.carService
       .getAllDetailsByColorId(colorTypeId)
       .subscribe((response) => {
-        console.log('samet');
         if (response.success) {
           this.carsDtos = response.data;
           this.dataLoaded = true;

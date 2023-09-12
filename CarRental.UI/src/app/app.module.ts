@@ -10,9 +10,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FuelTypeComponent } from './components/fuel-type/fuel-type.component';
 import { GearTypeComponent } from './components/gear-type/gear-type.component';
+import { IndexComponent } from './components/index/index.component';
 
 @NgModule({
-  declarations: [AppComponent, CarComponent, BrandComponent, NaviComponent, VatAddedPipe, FuelTypeComponent, GearTypeComponent],
+  declarations: [
+    AppComponent,
+    CarComponent,
+    BrandComponent,
+    NaviComponent,
+    VatAddedPipe,
+    FuelTypeComponent,
+    GearTypeComponent,
+    IndexComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

@@ -20,13 +20,23 @@
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/assets/public/css/bootstrap.min.css",
+              "src/assets/public/css/animate.css",
+              "src/assets/public/css/aos.css",
+              "src/assets/public/css/flaticon.css",
+              "src/assets/public/css/icomoon.css",
+              "src/assets/public/css/ionicons.min.css",
+              "src/assets/public/css/jquery.timepicker.css",
+              "src/assets/public/css/magnific-popup.css",
+              "src/assets/public/css/open-iconic-bootstrap.min.css",
+              "src/assets/public/css/owl.theme.default.min.css",
+              "src/assets/public/css/style.css",
+              "src/assets/public/css/bootstrap/bootstrap-grid.css",
+              "src/assets/public/css/bootstrap/bootstrap-reboot.css",
+              "src/assets/public/css/css/bootstrap-reboot.css",
+              "src/assets/public/css/css/mixins/_text-hide.css"
             ],
-            "scripts": [
-              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "./node_modules/jquery/dist/jquery.min.js"
-            ]
+            "scripts": ["./node_modules/jquery/dist/jquery.min.js"]
           },
           "configurations": {
             "production": {
