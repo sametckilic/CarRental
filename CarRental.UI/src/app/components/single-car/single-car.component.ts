@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-single-car',
-  templateUrl: './single-car.component.html',
-  styleUrls: ['./single-car.component.css']
+  templateUrl: 'single-car.component.html',
 })
-export class SingleCarComponent {
-
+export class SingleCarComponent implements OnInit {
+  ngOnInit(): void {
+    console.log('samet');
+  }
 }

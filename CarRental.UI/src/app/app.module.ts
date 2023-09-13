@@ -10,6 +10,8 @@ import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { IndexComponent } from './components/index/index.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SingleCarComponent } from './components/single-car/single-car.component';
+import { ErrorComponent } from './components/error/error.component';
+import { YenicompComponent } from './components/yenicomp/yenicomp.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { SingleCarComponent } from './components/single-car/single-car.component
     IndexComponent,
     FooterComponent,
     SingleCarComponent,
+    ErrorComponent,
+    YenicompComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

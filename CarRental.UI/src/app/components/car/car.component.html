@@ -1,68 +1,24 @@
-<div
-  *ngIf="dataLoaded == false"
-  class="spinner-border text-dark mx-auto"
-  role="status"
+<section
+  class="hero-wrap hero-wrap-2 js-fullheight"
+  style="background-image: url('assets/public/images/bg_2.jpg')"
+  data-stellar-background-ratio="0.5"
 >
-  <span class="sr-only"></span>
-</div>
+  <div class="overlay"></div>
+  <div class="container">
+    <div
+      class="row no-gutters slider-text js-fullheight align-items-end justify-content-start"
+    >
+      <div class="col-md-9 pb-5">
+        <p class="breadcrumbs">
+          <span class="mr-2"
+            ><a routerLink="/">Home <i class="ion-ios-arrow-forward"></i></a
+          ></span>
+          <span>Cars <i class="ion-ios-arrow-forward"></i></span>
+        </p>
+        <h1 class="mb-3">Choose Your Car</h1>
+      </div>
+    </div>
+  </div>
+</section>
 
-<table *ngIf="dataLoaded == true" class="table">
-  <thead>
-    <tr>
-      <td>ID</td>
-      <td>Brand Id</td>
-      <td>Model Name</td>
-      <td>Price</td>
-    </tr>
-  </thead>
-  <tr *ngFor="let car of carsDtos">
-    <td>{{ car.id }}</td>
-    <td>{{ car.brandName }}</td>
-    <td>{{ car.modelName }}</td>
-    <td>{{ car.dailyPrice }}</td>
-  </tr>
-</table>
-<div class="row posts">
-  <div
-    *ngFor="let car of carsDtos"
-    class="card item col-md-4"
-    style="width: 18rem"
-  >
-    <img class="card-img-top" src="" alt="Card image cap" />
-    <div class="card-body">
-      <h5 class="card-title justify-content-center">{{ car.brandName }}</h5>
-      <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Cras justo odio</li>
-      <li class="list-group-item">Dapibus ac facilisis in</li>
-      <li class="list-group-item">Vestibulum at eros</li>
-    </ul>
-    <div class="card-body">
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
-    </div>
-  </div>
-  <div *ngFor="let car of carsDtos" class="card mx-auto" style="width: 18rem">
-    <img class="card-img-top" src="" alt="Card image cap" />
-    <div class="card-body">
-      <h5 class="card-title justify-content-center">{{ car.brandName }}</h5>
-      <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Cras justo odio</li>
-      <li class="list-group-item">Dapibus ac facilisis in</li>
-      <li class="list-group-item">Vestibulum at eros</li>
-    </ul>
-    <div class="card-body">
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
-    </div>
-  </div>
-</div>
+<router-outlet></router-outlet>
