@@ -24,12 +24,7 @@ export class NaviComponent {
     private colorService: ColorService,
     private fuelTypeService: FuelTypeService,
     private gearTypeService: GearTypeService
-  ) {
-    this.getBrands();
-    this.getColors();
-    this.getFuelTypes();
-    this.getGearTypes();
-  }
+  ) {}
 
   getBrands() {
     this.brandService.getBrands().subscribe((response) => {

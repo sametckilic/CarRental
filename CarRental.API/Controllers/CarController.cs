@@ -144,7 +144,7 @@ namespace CarRental.API.Controllers
         [HttpGet("GetByFuelTypeId")]
         public IActionResult GetByFuelTypeId(int fuelTypeId)
         {
-            var result = _carService.GetAllByFuelTypeId(fuelTypeId);
+            var result = _carService.GetAllByFuelTypeId (fuelTypeId);
 
             if (result.Success)
             {

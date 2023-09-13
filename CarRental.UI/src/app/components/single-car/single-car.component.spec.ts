@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BrandComponent } from './brand.component';
+import { SingleCarComponent } from './single-car.component';
 
-describe('BrandComponent', () => {
-  let component: BrandComponent;
-  let fixture: ComponentFixture<BrandComponent>;
+describe('SingleCarComponent', () => {
+  let component: SingleCarComponent;
+  let fixture: ComponentFixture<SingleCarComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [BrandComponent]
+      declarations: [SingleCarComponent]
     });
-    fixture = TestBed.createComponent(BrandComponent);
+    fixture = TestBed.createComponent(SingleCarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "@-ms-viewport",
+          "-moz-backface-visibility",
+          "-webkit-tap-highlight-color"
+        ]
+      }
+    ],
+    "no-inline-styles": "off"
+  }
+}

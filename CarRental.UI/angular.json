@@ -34,9 +34,16 @@
               "src/assets/public/css/bootstrap/bootstrap-grid.css",
               "src/assets/public/css/bootstrap/bootstrap-reboot.css",
               "src/assets/public/css/css/bootstrap-reboot.css",
-              "src/assets/public/css/css/mixins/_text-hide.css"
+              "src/assets/public/css/css/mixins/_text-hide.css",
+              "src/assets/public/css/owl.carousel.min.css",
+              "src/assets/public/css/owl.theme.default.min.css"
             ],
-            "scripts": ["./node_modules/jquery/dist/jquery.min.js"]
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "src/assets/public/js/owl.carousel.min.js",
+              "src/assets/public/js/bootstrap.min.js",
+              "src/assets/public/js/main.js"
+            ]
           },
           "configurations": {
             "production": {

@@ -16,11 +16,59 @@
             roasted parts
           </p>
 
-          <div class="heading-title ml-5 text-white">
-            <span>Easy steps for renting a car</span>
+          <div class="heading-title ml-5 font-size-">
+            <h4>
+              <a class="text-white">Easy steps for renting a car</a>
+            </h4>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<section class="ftco-section bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12 heading-section text-center mb-5">
+        <span class="subheading">What we offer</span>
+        <h2 class="mb-2">Feeatured Vehicles</h2>
+      </div>
+      <div
+        *ngIf="dataLoaded == false"
+        class="spinner-grow text-success justify-content-center"
+        role="status"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+    <div *ngIf="dataLoaded == true" class="row">
+      <div *ngFor="let car of carDto" class="col-md-4">
+        <div class="car-wrap rounded">
+          <div
+            class="img rounded d-flex align-items-end"
+            style="background-image: url({{ car.imageBase }})"
+          ></div>
+          <div class="text">
+            <h2 class="mb-0">
+              <a href="car-single.html">{{ car.modelName }}</a>
+            </h2>
+            <div class="d-flex mb-3">
+              <span class="cat">{{ car.brandName }}</span>
+              <p class="price ml-auto">
+                ${{ car.dailyPrice }} <span>/day</span>
+              </p>
+            </div>
+            <p class="d-flex mb-0 d-block">
+              <a href="#" class="btn btn-primary py-2 mr-1">Book now</a>
+              <a href="car-single.html" class="btn btn-secondary py-2 ml-1"
+                >Details</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
